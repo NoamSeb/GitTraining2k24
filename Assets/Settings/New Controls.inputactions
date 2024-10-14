@@ -81,7 +81,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "up",
+                    "name": "down",
                     "id": "cc328952-785d-4db9-afb6-88b57cca2563",
                     "path": "<Keyboard>/s",
                     "interactions": "",
@@ -92,7 +92,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "up",
+                    "name": "down",
                     "id": "3e25e15f-007c-48af-beb8-8d94ce068dea",
                     "path": "<Gamepad>/leftStick/down",
                     "interactions": "",
