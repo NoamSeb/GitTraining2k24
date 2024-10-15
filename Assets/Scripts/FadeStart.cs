@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class FadeStart : MonoBehaviour
 {
-    [SerializeField] Image debut;
+    [SerializeField] Image img;
     Color transparence;
 
     [SerializeField] float timer = 3f;
@@ -15,9 +15,9 @@ public class FadeStart : MonoBehaviour
 
     private void Start()
     {
-        transparence = debut.color;
+        transparence = img.color;
         transparence.a = 1f;
-        debut.color = transparence;
+        img.color = transparence;
 
         currentTimer = timer;
     }
@@ -28,6 +28,6 @@ public class FadeStart : MonoBehaviour
 
         float pourcentageTransparence = currentTimer / timer;
         transparence.a = fade.Evaluate(pourcentageTransparence);
-        debut.color = transparence;
+        img.color = transparence;
     }
 }

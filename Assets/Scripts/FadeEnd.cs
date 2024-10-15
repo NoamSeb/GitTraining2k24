@@ -10,7 +10,7 @@ public class FadeEnd : MonoBehaviour
     [SerializeField] bool PlayGame;
     [SerializeField] bool QuitGame;
 
-    [SerializeField] Image debut;
+    [SerializeField] Image img;
     Color transparence;
 
     [SerializeField] float timer = 3f;
@@ -23,9 +23,9 @@ public class FadeEnd : MonoBehaviour
     private void Start()
     {
         startGame = false;
-        transparence = debut.color;
+        transparence = img.color;
         transparence.a = 0f;
-        debut.color = transparence;
+        img.color = transparence;
 
         currentTimer = timer;
     }
@@ -48,7 +48,7 @@ public class FadeEnd : MonoBehaviour
 
 
             transparence.a = fade.Evaluate(pourcentageTransparence);
-            debut.color = transparence;
+            img.color = transparence;
 
             if (pourcentageTransparence >= 1)
             {
