@@ -2,15 +2,33 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class LampManager : MonoBehaviour
 {
-   [SerializeField] public int maxLamps;
-   [SerializeField] private TextMeshProUGUI lampCountText;
+   private static LampManager m_Instance;
 
-   void Start()
+   public static LampManager Instance
    {
-      lampCountText.text = maxLamps.ToString();
+      get
+      {
+         if (m_Instance == null)
+         {
+            m_Instance = new LampManager();
+         }
+
+         return m_Instance;
+      }
+   }
+
+   public event Action UseLampEvent;
+
+   [SerializeField] public int maxLamps { get; set; } = 10;
+   public void UseLamp()
+   {
+      maxLamps--;
+      if (UseLampEvent != null)
+      {
+         UseLampEvent();
+      }
    }
 }

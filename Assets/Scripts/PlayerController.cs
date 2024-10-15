@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,10 +12,12 @@ public class PlayerController : MonoBehaviour
     
     [Header("Extern Object : ")]
     [SerializeField] private GameObject LampPrefabs;
-    [SerializeField] private int m_LampCount = 10;
     
     private Vector2 m_MoveVector;
     private Rigidbody2D m_Rigidbody2D;
+    [SerializeField] int LampCounter = 10;
+    
+    [SerializeField] private TextMeshProUGUI lampCountText;
 
     #region Initialization
 
@@ -27,6 +31,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         Move();
+        lampCountText.text = LampCounter.ToString();
     }
 
     
@@ -57,12 +62,13 @@ public class PlayerController : MonoBehaviour
 
     void CreateLamp()
     {
-        print("Create lamp");
-        if (LampPrefabs != null && m_LampCount > 0)
+        if (LampPrefabs != null && LampCounter > 0)
         {
             Vector2 lampPosition = new Vector2(transform.position.x, transform.position.y);
 
             GameObject newLamp = Instantiate(LampPrefabs, lampPosition, Quaternion.identity);
+            LampCounter--;
+            print(LampCounter);
         }
     }
 }
