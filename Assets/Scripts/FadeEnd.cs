@@ -30,12 +30,13 @@ public class FadeEnd : MonoBehaviour
         currentTimer = timer;
     }
 
-
-    public void Play()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        startGame = true;
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            startGame = true;
+        }
     }
-
 
     private void Update()
     {
