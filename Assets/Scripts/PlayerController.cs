@@ -31,7 +31,10 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         Move();
-        lampCountText.text = LampCounter.ToString();
+        if (lampCountText != null)
+        {
+            lampCountText.text = LampCounter.ToString();
+        }
     }
 
     
