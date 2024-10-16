@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField] private TextMeshProUGUI lampCountText;
 
+    public bool OnTriggerBarrel = false;
+    public InteractBarrel currentBarrel;
+
     #region Initialization
 
     void Awake()
@@ -52,6 +55,20 @@ public class PlayerController : MonoBehaviour
             CreateLamp();
         }
     }
+
+
+    public void ReadInteractBarrel(InputAction.CallbackContext context)
+    {
+        if (context.performed && OnTriggerBarrel)
+        {
+            if (currentBarrel != null)
+            {
+                currentBarrel.OpenBarrel();
+            }
+        }
+    }
+
+
     #endregion
    
     void Move()
@@ -74,4 +91,6 @@ public class PlayerController : MonoBehaviour
             print(LampCounter);
         }
     }
+
+
 }
