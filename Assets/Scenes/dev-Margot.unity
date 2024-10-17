@@ -2871,8 +2871,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2096359173}
     - target: {fileID: 5853977896231824954, guid: 0aaa375027a86ce4682f90226e1321a0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d99016a0f387f494284beebdbc85dc66, type: 3}
+    - target: {fileID: 5853977896231824954, guid: 0aaa375027a86ce4682f90226e1321a0, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5853977896231824954, guid: 0aaa375027a86ce4682f90226e1321a0, type: 3}
       propertyPath: m_Color.g
@@ -2880,7 +2884,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5853977896231824954, guid: 0aaa375027a86ce4682f90226e1321a0, type: 3}
       propertyPath: m_Color.r
-      value: 0.043137312
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5936529638545971302, guid: 0aaa375027a86ce4682f90226e1321a0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2888,7 +2892,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5936529638545971302, guid: 0aaa375027a86ce4682f90226e1321a0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.31
       objectReference: {fileID: 0}
     - target: {fileID: 5936529638545971302, guid: 0aaa375027a86ce4682f90226e1321a0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2904,7 +2908,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6613627377878729560, guid: 0aaa375027a86ce4682f90226e1321a0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.36
+      value: -2.31
       objectReference: {fileID: 0}
     - target: {fileID: 6613627377878729560, guid: 0aaa375027a86ce4682f90226e1321a0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2945,14 +2949,14 @@ PrefabInstance:
     - target: {fileID: 7283301536378936106, guid: 0aaa375027a86ce4682f90226e1321a0, type: 3}
       propertyPath: m_LightCookieSprite
       value: 
-      objectReference: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+      objectReference: {fileID: 21300000, guid: d99016a0f387f494284beebdbc85dc66, type: 3}
     - target: {fileID: 7283301536378936106, guid: 0aaa375027a86ce4682f90226e1321a0, type: 3}
       propertyPath: m_LocalBounds.m_Center.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7283301536378936106, guid: 0aaa375027a86ce4682f90226e1321a0, type: 3}
       propertyPath: m_LocalBounds.m_Center.y
-      value: 0.14492708
+      value: -0.328125
       objectReference: {fileID: 0}
     - target: {fileID: 7283301536378936106, guid: 0aaa375027a86ce4682f90226e1321a0, type: 3}
       propertyPath: m_LocalBounds.m_Extent.x
@@ -2960,7 +2964,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7283301536378936106, guid: 0aaa375027a86ce4682f90226e1321a0, type: 3}
       propertyPath: m_LocalBounds.m_Extent.y
-      value: 0.43359375
+      value: 0.671875
       objectReference: {fileID: 0}
     - target: {fileID: 8407991189028510945, guid: 0aaa375027a86ce4682f90226e1321a0, type: 3}
       propertyPath: m_ActionEvents.Array.size
