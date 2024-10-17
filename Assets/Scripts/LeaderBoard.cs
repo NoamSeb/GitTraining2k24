@@ -16,7 +16,8 @@ public class LeaderBoard : MonoBehaviour
 
     public TMP_InputField inputField;
 
-
+    [SerializeField] TextMeshProUGUI affichageTimer;
+    [SerializeField] GameObject panelLearderBoard;
 
 
     [System.Serializable]
@@ -42,13 +43,19 @@ public class LeaderBoard : MonoBehaviour
     private void Start()
     {
         popUpSpeudo.SetActive(false);
+        panelLearderBoard.SetActive(false);
     }
 
     public void PostScorePopUp()
     {
         popUpSpeudo.SetActive(true);
-        //nomPlayer = nom;
+    }
 
+
+    public void AffichageLeaderBoard()
+    {
+        affichageTimer.text = timerString;
+        panelLearderBoard.SetActive(true);
     }
 
 

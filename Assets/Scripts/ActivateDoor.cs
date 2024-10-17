@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ActivateDoor : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class ActivateDoor : MonoBehaviour
         {
             CanMove = true;
             timer.finJeu = true;
+            collision.gameObject.GetComponent<PlayerInput>().enabled = false;
             //play animation ouverture ?
         }
     }

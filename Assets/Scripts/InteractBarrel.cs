@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class InteractBarrel : MonoBehaviour
@@ -9,6 +10,7 @@ public class InteractBarrel : MonoBehaviour
     public bool key = true;
 
     PlayerController playerController;
+    PlayerInput playerInput;
 
     [SerializeField] GameObject keyPrefab;
 
@@ -19,6 +21,7 @@ public class InteractBarrel : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             playerController = collision.gameObject.GetComponent<PlayerController>();
+            playerInput = collision.gameObject.GetComponent<PlayerInput>();
 
             playerController.OnTriggerBarrel = true;
             playerController.currentBarrel = this;
@@ -49,9 +52,11 @@ public class InteractBarrel : MonoBehaviour
     {
         imgJumpscare.SetActive(true);
         playerController.enabled = false;
+        playerInput.enabled = false;
         yield return new WaitForSeconds(1);
         imgJumpscare.SetActive(false);
         playerController.enabled = true;
+        playerInput.enabled = true;
         Destroy(this.gameObject);
     }
 }

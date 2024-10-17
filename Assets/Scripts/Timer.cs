@@ -32,6 +32,7 @@ public class Timer : MonoBehaviour
         {
             lb.timerInt = (int)timer;
             lb.timerString = tmp.text;
+            lb.AffichageLeaderBoard();
         }
     }
 }
