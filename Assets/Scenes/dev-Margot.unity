@@ -2854,6 +2854,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1292800491751327892, guid: 0aaa375027a86ce4682f90226e1321a0, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 1885747526164847932, guid: 0aaa375027a86ce4682f90226e1321a0, type: 3}
       propertyPath: lampCountText
       value: 
