@@ -41,7 +41,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _OutlineTex:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 0, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
@@ -102,7 +102,7 @@ Material:
     - _FaceColor: {r: 1, g: 1, b: 1, a: 1}
     - _GlowColor: {r: 0, g: 1, b: 0, a: 0.5}
     - _MaskCoord: {r: 0, g: 0, b: 32767, a: 32767}
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OutlineColor: {r: 0.049706575, g: 0.03071345, b: 0.026241222, a: 1}
     - _ReflectFaceColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectOutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
@@ -678,6 +678,21 @@ MonoBehaviour:
     m_ClassDefinitionType: 0
   - m_Index: 90
     m_Metrics:
+      m_Width: 33.75
+      m_Height: 33.75
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 33.75
+      m_HorizontalAdvance: 39.375
+    m_GlyphRect:
+      m_X: 217
+      m_Y: 162
+      m_Width: 34
+      m_Height: 34
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+  - m_Index: 138
+    m_Metrics:
       m_Width: 39.375
       m_Height: 33.75
       m_HorizontalBearingX: 0
@@ -784,15 +799,15 @@ MonoBehaviour:
   - m_Index: 24
     m_Metrics:
       m_Width: 33.75
-      m_Height: 50.625
+      m_Height: 56.25
       m_HorizontalBearingX: 0
-      m_HorizontalBearingY: 50.625
+      m_HorizontalBearingY: 56.25
       m_HorizontalAdvance: 39.375
     m_GlyphRect:
       m_X: 10
       m_Y: 298
       m_Width: 34
-      m_Height: 51
+      m_Height: 57
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
@@ -1326,6 +1341,95 @@ MonoBehaviour:
   - m_X: 955
     m_Y: 0
     m_Width: 53
+    m_Height: 70
+  m_FreeGlyphRects:
+  - m_X: 283
+    m_Y: 147
+    m_Width: 59
+    m_Height: 70
+  - m_X: 207
+    m_Y: 152
+    m_Width: 53
+    m_Height: 53
+  - m_X: 342
+    m_Y: 76
+    m_Width: 31
+    m_Height: 31
+  - m_X: 95
+    m_Y: 176
+    m_Width: 59
+    m_Height: 70
+  - m_X: 154
+    m_Y: 176
+    m_Width: 53
+    m_Height: 76
+  - m_X: 207
+    m_Y: 205
+    m_Width: 53
+    m_Height: 70
+  - m_X: 0
+    m_Y: 218
+    m_Width: 59
+    m_Height: 70
+  - m_X: 59
+    m_Y: 246
+    m_Width: 53
+    m_Height: 70
+  - m_X: 0
+    m_Y: 288
+    m_Width: 59
+    m_Height: 70
+  - m_X: 112
+    m_Y: 252
+    m_Width: 59
+    m_Height: 70
+  - m_X: 613
+    m_Y: 0
+    m_Width: 59
+    m_Height: 70
+  - m_X: 59
+    m_Y: 316
+    m_Width: 53
+    m_Height: 70
+  - m_X: 0
+    m_Y: 358
+    m_Width: 59
+    m_Height: 70
+  - m_X: 672
+    m_Y: 0
+    m_Width: 53
+    m_Height: 70
+  - m_X: 725
+    m_Y: 0
+    m_Width: 59
+    m_Height: 70
+  - m_X: 784
+    m_Y: 0
+    m_Width: 59
+    m_Height: 70
+  - m_X: 843
+    m_Y: 0
+    m_Width: 53
+    m_Height: 70
+  - m_X: 896
+    m_Y: 0
+    m_Width: 59
+    m_Height: 70
+  - m_X: 955
+    m_Y: 0
+    m_Width: 53
+    m_Height: 70
+  - m_X: 560
+    m_Y: 70
+    m_Width: 53
+    m_Height: 70
+  - m_X: 491
+    m_Y: 123
+    m_Width: 59
+    m_Height: 70
+  - m_X: 342
+    m_Y: 176
+    m_Width: 59
     m_Height: 70
   m_FreeGlyphRects:
   - m_X: 283
