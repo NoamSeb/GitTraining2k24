@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Key
   - Barrel
+  - Raven
   layers:
   - Default
   - TransparentFX

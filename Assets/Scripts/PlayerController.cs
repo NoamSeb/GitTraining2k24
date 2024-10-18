@@ -12,9 +12,12 @@ public class PlayerController : MonoBehaviour
     
     [Header("Extern Object : ")]
     [SerializeField] private GameObject LampPrefabs;
+    [SerializeField] private GameObject RavenDialog;
+    [SerializeField] private AudioClip RavenSound;
     
     private Vector2 m_MoveVector;
     private Rigidbody2D m_Rigidbody2D;
+    private AudioSource m_audioSource;
     [SerializeField] int LampCounter = 10;
     
     [SerializeField] private TextMeshProUGUI lampCountText;
@@ -27,6 +30,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
+        m_audioSource = GetComponent<AudioSource>();
     }
     #endregion
     
@@ -93,4 +97,18 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    private void OnTriggerEnter2D(Collider2D collidedObject)
+    {
+        if (collidedObject.gameObject.tag == "Raven")
+        {
+            RavenDialog.SetActive(true);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collidedObject){
+        if (collidedObject.gameObject.tag == "Raven")
+        {
+            RavenDialog.SetActive(false);
+            m_audioSource.PlayOneShot(RavenSound, 1.0f);
+        }
+    }
 }
