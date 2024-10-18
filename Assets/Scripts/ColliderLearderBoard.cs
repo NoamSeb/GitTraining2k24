@@ -12,7 +12,7 @@ public class ColliderLearderBoard : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             timer.dansTriggerFinJeu = true;
-            collision.gameObject.GetComponent<PlayerInput>().enabled = false;
+            //collision.gameObject.GetComponent<PlayerInput>().enabled = false;
         }
     }
 }
