@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour
     {
         if (LampPrefabs != null && LampCounter > 0)
         {
-            Vector2 lampPosition = new Vector2(transform.position.x, transform.position.y + 10);
+            Vector2 lampPosition = new Vector2(transform.position.x, transform.position.y + 0.2f);
             m_audioSource.PlayOneShot(LampSound, 1.0f);
             GameObject newLamp = Instantiate(LampPrefabs, lampPosition, Quaternion.identity);
             LampCounter--;
