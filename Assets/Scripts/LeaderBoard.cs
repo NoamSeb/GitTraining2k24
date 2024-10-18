@@ -92,6 +92,7 @@ public class LeaderBoard : MonoBehaviour
             if (timerString != null)
             {
                 PostDataToAPI(nomPlayer, timerString, timerInt);
+                popUpSpeudo.SetActive(false);
             }
         }
     }
