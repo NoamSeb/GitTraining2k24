@@ -106,9 +106,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MovementSpeed: 0.1
+  m_PlayerSpriteToTop: {fileID: 21300000, guid: f9d2e76e4da470b448c297baf7eb669d, type: 3}
+  m_PlayerSpriteToBottom: {fileID: 21300000, guid: d99016a0f387f494284beebdbc85dc66, type: 3}
+  m_PlayerSpriteToSide: {fileID: 21300000, guid: cc9fc2e21d0294641bec5fe2e9f13c9c, type: 3}
   LampPrefabs: {fileID: 7226888308687617846, guid: 84f78211723493c4ebecf8a729704f75, type: 3}
   RavenDialog: {fileID: 0}
   RavenSound: {fileID: 0}
+  LampSound: {fileID: 0}
   LampCounter: 10
   lampCountText: {fileID: 0}
   OnTriggerBarrel: 0
