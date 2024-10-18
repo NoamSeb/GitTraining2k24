@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Player Attribute : ")]
     [SerializeField] private float m_MovementSpeed;
+    [SerializeField] private Sprite m_PlayerSpriteToTop;
+    [SerializeField] private Sprite m_PlayerSpriteToBottom;
+    [SerializeField] private Sprite m_PlayerSpriteToSide;
     
     [Header("Extern Object : ")]
     [SerializeField] private GameObject LampPrefabs;
@@ -19,6 +22,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 m_MoveVector;
     private Rigidbody2D m_Rigidbody2D;
     private AudioSource m_audioSource;
+    private SpriteRenderer m_SpriteRenderer;
     [SerializeField] int LampCounter = 10;
     
     [SerializeField] private TextMeshProUGUI lampCountText;
@@ -32,6 +36,7 @@ public class PlayerController : MonoBehaviour
     {
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
         m_audioSource = GetComponent<AudioSource>();
+        m_SpriteRenderer = GetComponent<SpriteRenderer>();
     }
     #endregion
     
@@ -81,6 +86,23 @@ public class PlayerController : MonoBehaviour
         Vector2 direction = new Vector2(m_MoveVector.x, m_MoveVector.y).normalized;
         
         if (direction.magnitude > 0.1f){
+            if (direction.y >= 0.1f)
+            {
+                m_SpriteRenderer.sprite = m_PlayerSpriteToTop;
+            }else if (direction.y <= -0.1f)
+            {
+                m_SpriteRenderer.sprite = m_PlayerSpriteToBottom;
+            }
+
+            if (direction.x >= 0.1f)
+            {
+                m_SpriteRenderer.sprite = m_PlayerSpriteToSide;
+                m_SpriteRenderer.flipX = false;
+            }else if (direction.x <= -0.1f)
+            {
+                m_SpriteRenderer.sprite = m_PlayerSpriteToSide;
+                m_SpriteRenderer.flipX = true;
+            }
             m_Rigidbody2D.position += direction * m_MovementSpeed;
         }
     }
