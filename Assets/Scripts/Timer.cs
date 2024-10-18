@@ -13,6 +13,8 @@ public class Timer : MonoBehaviour
 
     public bool finJeu = false;
 
+    public bool dansTriggerFinJeu = false;
+
     [SerializeField] LeaderBoard lb;
 
     bool IsActivate = false;
@@ -22,6 +24,8 @@ public class Timer : MonoBehaviour
         timer = 0;
         tmp = gameObject.GetComponent<TextMeshProUGUI>();
     }
+
+    
 
     void Update()
     {
@@ -34,7 +38,7 @@ public class Timer : MonoBehaviour
         {
             lb.timerInt = (int)timer;
             lb.timerString = tmp.text;
-            if (!IsActivate)
+            if (!IsActivate && dansTriggerFinJeu)
             {
                 lb.AffichageLeaderBoard();
                 IsActivate = true;
