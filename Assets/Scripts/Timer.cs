@@ -7,9 +7,15 @@ using static Unity.Burst.Intrinsics.X86.Avx;
 
 public class Timer : MonoBehaviour
 {
-    float timer = 0;
+    public float timer = 0;
 
     TextMeshProUGUI tmp;
+
+    public bool finJeu = false;
+
+    [SerializeField] LeaderBoard lb;
+
+    bool IsActivate = false;
 
     private void Start()
     {
@@ -19,8 +25,20 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
-        timer += Time.deltaTime;
-        var ts = TimeSpan.FromSeconds(timer);
-        tmp.text = string.Format("{0:00}:{1:00}", ts.Minutes, ts.Seconds);
+        if (!finJeu)
+        {
+            timer += Time.deltaTime;
+            var ts = TimeSpan.FromSeconds(timer);
+            tmp.text = string.Format("{0:00}:{1:00}", ts.Minutes, ts.Seconds);
+        } else if (lb != null)
+        {
+            lb.timerInt = (int)timer;
+            lb.timerString = tmp.text;
+            if (!IsActivate)
+            {
+                lb.AffichageLeaderBoard();
+                IsActivate = true;
+            }
+        }
     }
 }
