@@ -11,14 +11,18 @@ public class ActivateDoor : MonoBehaviour
 
     [SerializeField] Timer timer;
 
+    [SerializeField] Sprite spriteGateOpen;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player") && collision.gameObject.GetComponent<Key>().CanActivateDoor)
         {
             CanMove = true;
             timer.finJeu = true;
-            collision.gameObject.GetComponent<PlayerInput>().enabled = false;
-            //play animation ouverture ?
+            
+            this.GetComponent<Animator>().Play("gate");
+            this.GetComponent<SpriteRenderer>().sprite = spriteGateOpen;
+            this.GetComponent<BoxCollider2D>().enabled = false;
         }
     }
 
@@ -26,7 +30,7 @@ public class ActivateDoor : MonoBehaviour
     {
         if (CanMove)
         {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, 3.5f, 0), speed * Time.deltaTime);
+            //transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, -34, 0), speed * Time.deltaTime);
         }
     }
 }
