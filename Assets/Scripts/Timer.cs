@@ -15,6 +15,8 @@ public class Timer : MonoBehaviour
 
     [SerializeField] LeaderBoard lb;
 
+    bool IsActivate = false;
+
     private void Start()
     {
         timer = 0;
@@ -32,7 +34,11 @@ public class Timer : MonoBehaviour
         {
             lb.timerInt = (int)timer;
             lb.timerString = tmp.text;
-            lb.AffichageLeaderBoard();
+            if (!IsActivate)
+            {
+                lb.AffichageLeaderBoard();
+                IsActivate = true;
+            }
         }
     }
 }

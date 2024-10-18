@@ -1,8 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UIElements;
 
 public class LeaderBoard : MonoBehaviour
 {
@@ -18,6 +22,11 @@ public class LeaderBoard : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI affichageTimer;
     [SerializeField] GameObject panelLearderBoard;
+
+    string url = "https://golias-api.noamsebahoun.fr/api.php";
+
+    [SerializeField] List<TextMeshProUGUI> nomsPlayers = new List<TextMeshProUGUI>();
+    [SerializeField] List<TextMeshProUGUI> scorPlayers = new List<TextMeshProUGUI>();
 
 
     [System.Serializable]
@@ -44,6 +53,8 @@ public class LeaderBoard : MonoBehaviour
     {
         popUpSpeudo.SetActive(false);
         panelLearderBoard.SetActive(false);
+
+        ServicePointManager.ServerCertificateValidationCallback = CertificateValidationCallback;
     }
 
     public void PostScorePopUp()
@@ -56,6 +67,7 @@ public class LeaderBoard : MonoBehaviour
     {
         affichageTimer.text = timerString;
         panelLearderBoard.SetActive(true);
+        GetDataFromAPI();
     }
 
 
@@ -115,14 +127,14 @@ public class LeaderBoard : MonoBehaviour
         PostData postData = new PostData(playerName, TimeString, TimeInt);
 
         // Démarrer la coroutine pour faire l'appel API
-        StartCoroutine(PostRequest("https://golias-api.noamsebahoun.fr/api.php", postData));
+        StartCoroutine(PostRequest(postData));
     }
 
 
 
 
     // Coroutine pour envoyer la requête POST
-    IEnumerator PostRequest(string url, PostData postData)
+    IEnumerator PostRequest(PostData postData)
     {
         WWWForm form = new WWWForm();
 
@@ -148,6 +160,143 @@ public class LeaderBoard : MonoBehaviour
             }
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    bool CertificateValidationCallback(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+    {
+        // Retourne toujours vrai, ignorera les erreurs de certificat
+        return true;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    // Appelle cette méthode pour démarrer la récupération des données
+    public void GetDataFromAPI()
+    {
+        StartCoroutine(GetRequest());
+    }
+
+
+
+
+
+
+
+
+
+
+
+    // Coroutine pour effectuer la requête GET
+    IEnumerator GetRequest()
+    {
+        // Crée la requête GET
+        using (UnityWebRequest request = UnityWebRequest.Get(url))
+        {
+            // Envoie la requête et attend la réponse
+            yield return request.SendWebRequest();
+
+            // Vérifie les erreurs possibles
+            if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
+            {
+                Debug.LogError("Erreur lors de la récupération des données : " + request.error);
+            }
+            else
+            {
+                // La réponse est dans request.downloadHandler.text
+                string jsonResponse = request.downloadHandler.text;
+                Debug.Log("Réponse API : " + jsonResponse);
+
+                // Désérialise la réponse JSON en une liste d'objets
+                PlayerDataList playerDataList = JsonUtility.FromJson<PlayerDataList>(WrapArray(jsonResponse));
+
+
+
+                for (int i = 0; i < nomsPlayers.Count; i++)
+                {
+                    if (playerDataList.players.Count > i)
+                    {
+                        nomsPlayers[i].text = playerDataList.players[i].PlayerName;
+                        scorPlayers[i].text = playerDataList.players[i].TimeString;
+                    }
+                }
+
+
+
+
+                //// Vérifie que nous avons bien reçu des joueurs
+                //if (playerDataList.players.Count > 0)
+                //{
+                //    // Récupérer les informations du premier joueur
+                //    PlayerData firstPlayer = playerDataList.players[0];
+                //
+                //    Debug.Log("Premier joueur - Nom : " + firstPlayer.PlayerName + ", Score : " + firstPlayer.TimeString);
+                //
+                //    // Récupérer les informations du deuxième joueur s'il existe
+                //    if (playerDataList.players.Count > 1)
+                //    {
+                //        PlayerData secondPlayer = playerDataList.players[1];
+                //        Debug.Log("Deuxième joueur - Nom : " + secondPlayer.PlayerName + ", Score : " + secondPlayer.TimeString);
+                //    }
+                //}
+
+
+
+
+
+
+
+
+            }
+        }
+    }
+
+    // Classe pour modéliser les données de joueur
+    [System.Serializable]
+    public class PlayerData
+    {
+        public string id;
+        public string PlayerName;
+        public string TimeString;
+        public int TimeInt;
+    }
+
+    // Classe contenant une liste de joueurs
+    [System.Serializable]
+    public class PlayerDataList
+    {
+        public List<PlayerData> players;
+    }
+
+    // Cette méthode est nécessaire pour traiter un tableau JSON avec JsonUtility
+    private string WrapArray(string jsonArray)
+    {
+        return "{\"players\":" + jsonArray + "}";
+    }
+
 
 
 }
