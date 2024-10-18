@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,8 +14,16 @@ public class InteractBarrel : MonoBehaviour
     PlayerInput playerInput;
 
     [SerializeField] GameObject keyPrefab;
-
+    [SerializeField] private AudioClip barrelSound;
+    [SerializeField] private AudioClip JumpscareSound;
+    
+    private AudioSource audioSource;
     public GameObject imgJumpscare;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -36,6 +45,7 @@ public class InteractBarrel : MonoBehaviour
 
     public void OpenBarrel()
     {
+        audioSource.PlayOneShot(barrelSound, 1.0f);
         if (jumpscare && imgJumpscare != null)
         {
             StartCoroutine(ActivateJumpscare());
@@ -50,6 +60,7 @@ public class InteractBarrel : MonoBehaviour
 
     IEnumerator ActivateJumpscare()
     {
+        audioSource.PlayOneShot(JumpscareSound, 1.0f);
         imgJumpscare.SetActive(true);
         playerController.enabled = false;
         playerInput.enabled = false;

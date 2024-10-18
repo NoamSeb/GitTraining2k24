@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,14 @@ public class Key : MonoBehaviour
 {
     [SerializeField] Image img_key1;
     [SerializeField] Image img_key2;
+    
+    AudioSource audioSource;
+    [SerializeField] AudioClip key;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     int compteur = 0;
 
@@ -16,6 +25,7 @@ public class Key : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Key") && compteur != 2)
         {
+            audioSource.PlayOneShot(key, 1.0f);
             if (compteur == 0)
             {
                 compteur += 1;

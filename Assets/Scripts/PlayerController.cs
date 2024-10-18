@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject LampPrefabs;
     [SerializeField] private GameObject RavenDialog;
     [SerializeField] private AudioClip RavenSound;
+    [SerializeField] private AudioClip LampSound;
     
     private Vector2 m_MoveVector;
     private Rigidbody2D m_Rigidbody2D;
@@ -88,8 +89,8 @@ public class PlayerController : MonoBehaviour
     {
         if (LampPrefabs != null && LampCounter > 0)
         {
-            Vector2 lampPosition = new Vector2(transform.position.x, transform.position.y);
-
+            Vector2 lampPosition = new Vector2(transform.position.x, transform.position.y + 10);
+            m_audioSource.PlayOneShot(LampSound, 1.0f);
             GameObject newLamp = Instantiate(LampPrefabs, lampPosition, Quaternion.identity);
             LampCounter--;
             print(LampCounter);

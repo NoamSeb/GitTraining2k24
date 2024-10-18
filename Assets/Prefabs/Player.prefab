@@ -282,6 +282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   img_key1: {fileID: 0}
   img_key2: {fileID: 0}
+  key: {fileID: 8300000, guid: 2e9e3900a3b70bb409cb6bca2c366488, type: 3}
   CanActivateDoor: 0
 --- !u!70 &509736721576268361
 CapsuleCollider2D:
