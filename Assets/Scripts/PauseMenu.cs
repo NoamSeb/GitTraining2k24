@@ -8,7 +8,7 @@ public class PauseMenu : MonoBehaviour
    public static bool GameIsPaused = false;
    public GameObject pauseMenuUI;
 
-    [SerializeField] Timer timer;
+    //[SerializeField] Timer timer;
     [SerializeField] PlayerController player;
 
     [SerializeField] Animator buttonResume;
@@ -32,9 +32,9 @@ public class PauseMenu : MonoBehaviour
     private void Start()
     {
         pauseMenuUI.SetActive(false);
-        buttonResume.updateMode = AnimatorUpdateMode.UnscaledTime;
-        buttonMenu.updateMode = AnimatorUpdateMode.UnscaledTime;
-        buttonQuit.updateMode = AnimatorUpdateMode.UnscaledTime;
+        //buttonResume.updateMode = AnimatorUpdateMode.UnscaledTime;
+        //buttonMenu.updateMode = AnimatorUpdateMode.UnscaledTime;
+        //buttonQuit.updateMode = AnimatorUpdateMode.UnscaledTime;
     }
 
     public void Resume()
