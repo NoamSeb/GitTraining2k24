@@ -30,6 +30,9 @@ public class PlayerController : MonoBehaviour
     public bool OnTriggerBarrel = false;
     public InteractBarrel currentBarrel;
 
+    public bool isPause = false;
+    [SerializeField] PauseMenu menuPause;
+
     #region Initialization
 
     void Awake()
@@ -79,8 +82,28 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    public void ReadInteractPauseMenu(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (isPause)
+            {
+                print("kakou kakou");
+                menuPause.Resume();
+                isPause = false;
+            }
+            else if (!isPause)
+            {
+                print("Resume");
+                menuPause.Pause();
+                isPause = true;
+            }
+        }
+    }
+
+
     #endregion
-   
+
     void Move()
     {
         Vector2 direction = new Vector2(m_MoveVector.x, m_MoveVector.y).normalized;

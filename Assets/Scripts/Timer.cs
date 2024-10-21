@@ -19,17 +19,20 @@ public class Timer : MonoBehaviour
 
     bool IsActivate = false;
 
+    public bool canTime;
+
     private void Start()
     {
         timer = 0;
         tmp = gameObject.GetComponent<TextMeshProUGUI>();
+        canTime = true;
     }
 
     
 
     void Update()
     {
-        if (!finJeu)
+        if (!finJeu && canTime)
         {
             timer += Time.deltaTime;
             var ts = TimeSpan.FromSeconds(timer);

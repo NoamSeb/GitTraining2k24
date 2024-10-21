@@ -8,33 +8,47 @@ public class PauseMenu : MonoBehaviour
    public static bool GameIsPaused = false;
    public GameObject pauseMenuUI;
 
-   void FixedUpdate()
-   {
-      if (Input.GetKeyDown(KeyCode.Escape))
-      {
-         if (GameIsPaused)
-         {
-            Resume();
-         }
-         else
-         {
-            Pause();
-         }
-      }
-   }
+    [SerializeField] Timer timer;
+    [SerializeField] PlayerController player;
 
-   public void Resume()
+    [SerializeField] Animator buttonResume;
+    [SerializeField] Animator buttonMenu;
+    [SerializeField] Animator buttonQuit;
+
+    //void FixedUpdate()
+    //{
+    //     if (player.isPause)
+    //     {
+    //         print("ah ke koukou");
+    //         Pause();
+    //     }
+    //     else if (!player.isPause)
+    //     {
+    //         print("kakou kakou");
+    //         Resume();
+    //     }
+    //}
+
+    private void Start()
+    {
+        pauseMenuUI.SetActive(false);
+        buttonResume.updateMode = AnimatorUpdateMode.UnscaledTime;
+        buttonMenu.updateMode = AnimatorUpdateMode.UnscaledTime;
+        buttonQuit.updateMode = AnimatorUpdateMode.UnscaledTime;
+    }
+
+    public void Resume()
    {
       pauseMenuUI.SetActive(false);
       Time.timeScale = 1f;
-      GameIsPaused = false;
+      //GameIsPaused = false;
    }
 
    public void Pause()
    {
       pauseMenuUI.SetActive(true);
       Time.timeScale = 0f;
-      GameIsPaused = true;
+      //GameIsPaused = true;
    }
 
    public void LoadMenu()
